@@ -1,5 +1,6 @@
 package pomodoroclock;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -17,14 +18,21 @@ public class Temporizador extends Thread {
     public static int tempoAgora;
     public static int tempoInicial = tempoAgora;
     public static int contando = 0;
-    public int minutos;
-    public int segundos;
-    public String tempoMin;
-    public String tempoSeg;
+    private int trabalho;
+    private int descanso;
+    private int descansoLongo;
+    private int minutos;
+    private int segundos;
+    private String tempoMin;
+    private String tempoSeg;
+
+    private static int rotinaNumero;
+    Arquivo arquivo = new Arquivo();
 
     Som musica = new Som();
 
     JLabel relogio = new JLabel();
+    JLabel tempoAtual = new JLabel();
     JButton pausar = new JButton();
 
     /**
@@ -78,6 +86,63 @@ public class Temporizador extends Thread {
     }
 
     public void resetarRelogio() {
+        contando = 1;
         setarRelogio();
+    }
+
+    public void pegarTempo() {
+        ArrayList<String> tempos = arquivo.pegaTemposEditados();
+        for (int i = 0; i < tempos.size(); i++) {
+            switch (i) {
+                case 0:
+                    trabalho = Integer.parseInt(tempos.get(i));
+                    break;
+                case 1:
+                    descanso = Integer.parseInt(tempos.get(i));
+                    break;
+                default:
+                    descansoLongo = Integer.parseInt(tempos.get(i));
+                    break;
+            }
+        }
+    }
+
+    public void rotina() {
+        switch (rotinaNumero) {
+            case 0:
+                tempoAgora = trabalho;
+                tempoAtual.setText(("Tempo de Trabalho"));
+                break;
+            case 1:
+                tempoAgora = descanso;
+                tempoAtual.setText(("Tempo de Descanso"));
+                break;
+            case 2:
+                tempoAgora = trabalho;
+                tempoAtual.setText(("Tempo de Trabalho"));
+                break;
+            case 3:
+                tempoAgora = descanso;
+                tempoAtual.setText(("Tempo de Descanso"));
+                break;
+            case 4:
+                tempoAgora = trabalho;
+                tempoAtual.setText(("Tempo de Trabalho"));
+                break;
+            case 5:
+                tempoAgora = descanso;
+                tempoAtual.setText(("Tempo de Descanso"));
+                break;
+            case 6:
+                tempoAgora = trabalho;
+                tempoAtual.setText(("Tempo de Trabalho"));
+                break;
+            case 7:
+                tempoAgora = descansoLongo;
+                tempoAtual.setText(("Descanso Longo"));
+                break;
+            default:
+                break;
+        }
     }
 }
