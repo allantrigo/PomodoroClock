@@ -12,6 +12,7 @@ public class InterfaceClk extends javax.swing.JFrame {
     static int timerSetado = 0;
     private int editar = 0;
     private int trabalho;
+    private int pausado = 0;
     private int descanso;
     private int descansoLongo;
     Temporizador timer;
@@ -29,6 +30,7 @@ public class InterfaceClk extends javax.swing.JFrame {
         if (trabalho == 0 || descanso == 0 || descansoLongo == 0) {
             pegarTempo();
         }
+        setarRelogio();
     }
 
     private void pegarTempo() {
@@ -49,6 +51,17 @@ public class InterfaceClk extends javax.swing.JFrame {
         lblTempoTrabalho.setText(String.valueOf(trabalho));
         lblTempoDescanso.setText(String.valueOf(descanso));
         lblTempoDescansoLongo.setText(String.valueOf(descansoLongo));
+    }
+
+    public void setarRelogio() {
+        int minutos = trabalho;
+        String tempoMin;
+        if (minutos <= 9) {
+            tempoMin = "0" + String.valueOf(minutos);
+        } else {
+            tempoMin = String.valueOf(minutos);
+        }
+        lblTempo.setText(tempoMin + ":00");
     }
 
     @SuppressWarnings("unchecked")
@@ -177,11 +190,11 @@ public class InterfaceClk extends javax.swing.JFrame {
                                     .addComponent(btnEditar))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addComponent(btnParar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(lblTrabalhoEditar)))))
+                                        .addComponent(lblTrabalhoEditar))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(btnParar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,35 +306,52 @@ public class InterfaceClk extends javax.swing.JFrame {
     private void btnIniciarPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPausarActionPerformed
         btnIniciarPausar.setText("Pausar");
         if (correndoOuPausado == 0) {
-            timer = new Temporizador();
-            if (timerSetado == 0) {
-                Temporizador.tempoAgora = 10;
-                timerSetado = 1;
+            if (pausado == 0) {
+                timer = new Temporizador();
+                timer.relogio = lblTempo;
+                timer.pausar = btnIniciarPausar;
+                timer.turno = lblTurno;
+                timer.tempoAtual = lblTempoAtual;
+                Temporizador.rodando = 1;
+                timer.start();
+                correndoOuPausado = 1;
+            } else if (pausado == 1) {
+                Temporizador.rodando = 1;
+                correndoOuPausado = 1;
             }
-            timer.relogio = lblTempo;
-            timer.pausar = btnIniciarPausar;
-            timer.tempoAtual = lblTempoAtual;
-            timer.start();
-            correndoOuPausado = 1;
-            Temporizador.contando = 0;
         } else if (correndoOuPausado == 1) {
-            Temporizador.contando = 1;
+            Temporizador.rodando = 0;
             btnIniciarPausar.setText("Iniciar");
             correndoOuPausado = 0;
+            pausado = 1;
         }
     }//GEN-LAST:event_btnIniciarPausarActionPerformed
 
     private void btnPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPararActionPerformed
-        Temporizador.contando = 1;
-        timerSetado = 0;
-        btnIniciarPausar.setText("Iniciar");
-        correndoOuPausado = 0;
+        if (timer != null) {
+            Temporizador.contando = 1;
+            timerSetado = 0;
+            btnIniciarPausar.setText("Iniciar");
+            Temporizador.rodando = 0;
+            Temporizador.threadKill = true;
+            pausado = 0;
+            correndoOuPausado = 0;
+            Temporizador.rotinaNumero = 0;
+        }
     }//GEN-LAST:event_btnPararActionPerformed
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
-        timer = new Temporizador();
-        timer.resetarRelogio();
-        Temporizador.tempoAgora = 10;
+        if (timer != null) {
+            Temporizador.contando = 1;
+            timerSetado = 0;
+            btnIniciarPausar.setText("Iniciar");
+            Temporizador.rodando = 0;
+            Temporizador.threadKill = true;
+            timer.resetarRelogio();
+            pausado = 0;
+            correndoOuPausado = 0;
+            Temporizador.rotinaNumero = 0;
+        }
     }//GEN-LAST:event_btnReiniciarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -370,6 +400,18 @@ public class InterfaceClk extends javax.swing.JFrame {
             iptDescansoEditar.setText("");
             iptDescansoLongoEditar.setText("");
             btnEditar.setText("Editar");
+            if (timer != null) {
+                Temporizador.contando = 1;
+                timerSetado = 0;
+                btnIniciarPausar.setText("Iniciar");
+                Temporizador.rodando = 0;
+                Temporizador.threadKill = true;
+                timer.resetarRelogio();
+                pausado = 0;
+                correndoOuPausado = 0;
+                Temporizador.rotinaNumero = 0;
+            }
+            setarRelogio();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
