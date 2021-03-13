@@ -110,35 +110,35 @@ public class Temporizador extends Thread {
     public void rotina() {
         switch (rotinaNumero) {
             case 0:
-                tempoAgora = trabalho;
+                tempoAgora = trabalho * 60;
                 tempoAtual.setText(("Tempo de Trabalho"));
                 break;
             case 1:
-                tempoAgora = descanso;
+                tempoAgora = descanso * 60;
                 tempoAtual.setText(("Tempo de Descanso"));
                 break;
             case 2:
-                tempoAgora = trabalho;
+                tempoAgora = trabalho * 60;
                 tempoAtual.setText(("Tempo de Trabalho"));
                 break;
             case 3:
-                tempoAgora = descanso;
+                tempoAgora = descanso * 60;
                 tempoAtual.setText(("Tempo de Descanso"));
                 break;
             case 4:
-                tempoAgora = trabalho;
+                tempoAgora = trabalho * 60;
                 tempoAtual.setText(("Tempo de Trabalho"));
                 break;
             case 5:
-                tempoAgora = descanso;
+                tempoAgora = descanso * 60;
                 tempoAtual.setText(("Tempo de Descanso"));
                 break;
             case 6:
-                tempoAgora = trabalho;
+                tempoAgora = trabalho * 60;
                 tempoAtual.setText(("Tempo de Trabalho"));
                 break;
             case 7:
-                tempoAgora = descansoLongo;
+                tempoAgora = descansoLongo * 60;
                 tempoAtual.setText(("Descanso Longo"));
                 break;
             default:
