@@ -44,6 +44,7 @@ public class Temporizador extends Thread {
      */
     @Override
     public void run() {
+        int fim = 0;
         pegarTempo();
         for (;;) {
             if (threadKill2) {
@@ -53,52 +54,60 @@ public class Temporizador extends Thread {
                 case 0:
                     tempoAgora = trabalho * 60;
                     turno.setText(("1"));
-                    tempoAtual.setText(("Tempo de Trabalho"));
+                    tempoAtual.setText("TRABALHO");
                     pomodoro();
                     break;
                 case 1:
                     tempoAgora = descanso * 60;
-                    tempoAtual.setText(("Tempo de Descanso"));
+                    tempoAtual.setText("DESCANSO");
                     pomodoro();
                     break;
                 case 2:
                     tempoAgora = trabalho * 60;
                     turno.setText(("2"));
-                    tempoAtual.setText(("Tempo de Trabalho"));
+                    tempoAtual.setText(("TRABALHO"));
                     pomodoro();
                     break;
                 case 3:
                     tempoAgora = descanso * 60;
-                    tempoAtual.setText(("Tempo de Descanso"));
+                    tempoAtual.setText(("DESCANSO"));
                     pomodoro();
                     break;
                 case 4:
                     tempoAgora = trabalho * 60;
                     turno.setText(("3"));
-                    tempoAtual.setText(("Tempo de Trabalho"));
+                    tempoAtual.setText(("TRABALHO"));
                     pomodoro();
                     break;
                 case 5:
                     tempoAgora = descanso * 60;
-                    tempoAtual.setText(("Tempo de Descanso"));
+                    tempoAtual.setText(("DESCANSO"));
                     pomodoro();
                     break;
                 case 6:
                     tempoAgora = trabalho * 60;
                     turno.setText(("4"));
-                    tempoAtual.setText(("Tempo de Trabalho"));
+                    tempoAtual.setText(("TRABALHO"));
                     pomodoro();
                     break;
                 case 7:
                     tempoAgora = descansoLongo * 60;
-                    tempoAtual.setText(("Descanso Longo"));
+                    tempoAtual.setText(("DESCANSO LONGO"));
                     pomodoro();
                     break;
                 default:
-                    tempoAtual.setText(("Tempo de Trabalho"));
-                    tempoAgora = trabalho * 60;
-                    setarRelogio();
+                    Temporizador.rodando = 0;
+                    Temporizador.threadKill = true;
+                    resetarRelogio();
+                    pausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
+                    InterfaceClk.pausado = 0;
+                    InterfaceClk.correndoOuPausado = 0;
+                    Temporizador.rotinaNumero = 0;
                     break;
+            }
+            if (fim == 1) {
+                InterfaceClk.correndoOuPausado = 0;
+                break;
             }
         }
     }

@@ -9,10 +9,9 @@ import java.util.ArrayList;
 public class InterfaceClk extends javax.swing.JFrame {
 
     static int correndoOuPausado = 0;
-    static int timerSetado = 0;
     private int editar = 0;
     private int trabalho;
-    private int pausado = 0;
+    public static int pausado = 0;
     private int descanso;
     private int descansoLongo;
     Temporizador timer;
@@ -20,9 +19,6 @@ public class InterfaceClk extends javax.swing.JFrame {
 
     public InterfaceClk() {
         initComponents();
-        lblTrabalhoEditar.setVisible(false);
-        lblDescansoEditar.setVisible(false);
-        lblDescansoLongoEditar.setVisible(false);
         iptTrabalhoEditar.setVisible(false);
         iptDescansoEditar.setVisible(false);
         iptDescansoLongoEditar.setVisible(false);
@@ -68,243 +64,125 @@ public class InterfaceClk extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        btnInfo = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        lblTempoTrabalho = new javax.swing.JLabel();
-        btnIniciarPausar = new javax.swing.JButton();
-        btnParar = new javax.swing.JButton();
-        btnReiniciar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         lblTempo = new javax.swing.JLabel();
-        lblTempoAtual = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblTempoDescanso = new javax.swing.JLabel();
-        lblTrabalhoEditar = new javax.swing.JLabel();
-        lblDescansoEditar = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
-        lblDescansoLongoEditar = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        lblTempoDescansoLongo = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        iptTrabalhoEditar = new javax.swing.JTextField();
-        iptDescansoEditar = new javax.swing.JTextField();
+        btnReiniciar = new javax.swing.JButton();
+        btnParar = new javax.swing.JButton();
+        btnIniciarPausar = new javax.swing.JButton();
         iptDescansoLongoEditar = new javax.swing.JTextField();
+        iptDescansoEditar = new javax.swing.JTextField();
+        iptTrabalhoEditar = new javax.swing.JTextField();
+        lblTempoDescanso = new javax.swing.JLabel();
+        lblTempoDescansoLongo = new javax.swing.JLabel();
+        lblTempoTrabalho = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblTempoAtual = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(540, 960));
+        setPreferredSize(new java.awt.Dimension(540, 960));
+        setSize(new java.awt.Dimension(400, 800));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnInfo.setText("Info");
+        lblTempo.setFont(new java.awt.Font("Calibri", 1, 48)); // NOI18N
+        lblTempo.setText("00:00");
+        getContentPane().add(lblTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 340, -1, -1));
 
-        jLabel1.setText("Tempo de Trabalho:");
+        lblTurno.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblTurno.setText("1");
+        getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 460, 40, -1));
 
-        lblTempoTrabalho.setText("25");
-
-        btnIniciarPausar.setText("Iniciar");
-        btnIniciarPausar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarPausarActionPerformed(evt);
-            }
-        });
-
-        btnParar.setText("Parar");
-        btnParar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPararActionPerformed(evt);
-            }
-        });
-
-        btnReiniciar.setText("Reiniciar");
+        btnReiniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Reiniciar.png"))); // NOI18N
+        btnReiniciar.setBorder(null);
+        btnReiniciar.setBorderPainted(false);
+        btnReiniciar.setContentAreaFilled(false);
         btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReiniciarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnReiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 607, 180, 102));
 
-        btnEditar.setText("Editar");
+        btnParar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Parar.png"))); // NOI18N
+        btnParar.setBorderPainted(false);
+        btnParar.setContentAreaFilled(false);
+        btnParar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPararActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 607, 180, 102));
+
+        btnIniciarPausar.setBackground(new java.awt.Color(255, 255, 255));
+        btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png"))); // NOI18N
+        btnIniciarPausar.setBorder(null);
+        btnIniciarPausar.setBorderPainted(false);
+        btnIniciarPausar.setContentAreaFilled(false);
+        btnIniciarPausar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarPausarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIniciarPausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 607, 180, 102));
+
+        iptDescansoLongoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        getContentPane().add(iptDescansoLongoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 790, 70, 70));
+
+        iptDescansoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        getContentPane().add(iptDescansoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 790, 70, 70));
+
+        iptTrabalhoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        getContentPane().add(iptTrabalhoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 70, 70));
+
+        lblTempoDescanso.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        lblTempoDescanso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTempoDescanso.setText("5");
+        lblTempoDescanso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblTempoDescanso, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 788, 70, 70));
+
+        lblTempoDescansoLongo.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        lblTempoDescansoLongo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTempoDescansoLongo.setText("30");
+        getContentPane().add(lblTempoDescansoLongo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 788, 70, 70));
+
+        lblTempoTrabalho.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
+        lblTempoTrabalho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTempoTrabalho.setText("25");
+        getContentPane().add(lblTempoTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 70, 70));
+
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setOpaque(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 870, -1, -1));
 
-        lblTempo.setFont(new java.awt.Font("Calibri", 1, 48)); // NOI18N
-        lblTempo.setText("00:00");
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.GridLayout());
 
         lblTempoAtual.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
-        lblTempoAtual.setText("TEMPO DE TRABALHO");
+        lblTempoAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTempoAtual.setText("TRABALHO");
+        lblTempoAtual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTempoAtual);
 
-        jLabel3.setText("Tempo de Descanso:");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 330, 90));
 
-        lblTempoDescanso.setText("5");
-
-        lblTrabalhoEditar.setText("Trabalho:");
-
-        lblDescansoEditar.setText("Descanso:");
-
-        jLabel2.setText("Minutos");
-
-        jLabel4.setText("Minutos");
-
-        jLabel5.setText("Turno:");
-
-        lblTurno.setText("1");
-
-        lblDescansoLongoEditar.setText("Descanso Longo:");
-
-        jLabel6.setText("Tempo de Descanso Longo:");
-
-        lblTempoDescansoLongo.setText("30");
-
-        jLabel7.setText("Minutos");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTempoAtual)
-                            .addComponent(btnInfo)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(79, 79, 79)
-                                        .addComponent(lblDescansoEditar)
-                                        .addGap(22, 22, 22))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblDescansoLongoEditar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(iptDescansoEditar)
-                                    .addComponent(iptTrabalhoEditar)
-                                    .addComponent(iptDescansoLongoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnIniciarPausar)
-                                    .addComponent(btnEditar))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblTrabalhoEditar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addComponent(btnParar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnReiniciar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblTempo))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(lblTempoDescanso, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblTempoTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel2))
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel4)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(lblTempoDescansoLongo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jLabel7))))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(45, 45, 45))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTempoAtual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTempo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTempoTrabalho)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTempoDescanso, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTempoDescansoLongo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIniciarPausar)
-                    .addComponent(btnParar)
-                    .addComponent(btnReiniciar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEditar)
-                        .addComponent(lblTrabalhoEditar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(iptTrabalhoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iptDescansoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDescansoEditar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iptDescansoLongoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDescansoLongoEditar))))
-                .addGap(118, 118, 118))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, Short.MAX_VALUE)
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoCorreto.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPausarActionPerformed
         btnIniciarPausar.setText("Pausar");
+        btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pausar.png")));
         if (correndoOuPausado == 0) {
             if (pausado == 0) {
                 timer = new Temporizador();
@@ -321,7 +199,7 @@ public class InterfaceClk extends javax.swing.JFrame {
             }
         } else if (correndoOuPausado == 1) {
             Temporizador.rodando = 0;
-            btnIniciarPausar.setText("Iniciar");
+            btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
             correndoOuPausado = 0;
             pausado = 1;
         }
@@ -330,8 +208,7 @@ public class InterfaceClk extends javax.swing.JFrame {
     private void btnPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPararActionPerformed
         if (timer != null) {
             Temporizador.contando = 1;
-            timerSetado = 0;
-            btnIniciarPausar.setText("Iniciar");
+            btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
             Temporizador.rodando = 0;
             Temporizador.threadKill = true;
             pausado = 0;
@@ -342,11 +219,10 @@ public class InterfaceClk extends javax.swing.JFrame {
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
         if (timer != null) {
-            Temporizador.contando = 1;
-            timerSetado = 0;
-            btnIniciarPausar.setText("Iniciar");
+            btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
             Temporizador.rodando = 0;
             Temporizador.threadKill = true;
+            lblTempoAtual.setText("TRABALHO"); 
             timer.resetarRelogio();
             pausado = 0;
             correndoOuPausado = 0;
@@ -360,9 +236,6 @@ public class InterfaceClk extends javax.swing.JFrame {
         String descansoLongoEditar;
         ArrayList<String> tempoEditado = new ArrayList();
         if (editar == 0) {
-            lblTrabalhoEditar.setVisible(true);
-            lblDescansoEditar.setVisible(true);
-            lblDescansoLongoEditar.setVisible(true);
             iptTrabalhoEditar.setVisible(true);
             iptDescansoEditar.setVisible(true);
             iptDescansoLongoEditar.setVisible(true);
@@ -390,9 +263,6 @@ public class InterfaceClk extends javax.swing.JFrame {
             arquivo.SalvaTemposEditados(tempoEditado);
             pegarTempo();
             editar = 0;
-            lblTrabalhoEditar.setVisible(false);
-            lblDescansoEditar.setVisible(false);
-            lblDescansoLongoEditar.setVisible(false);
             iptTrabalhoEditar.setVisible(false);
             iptDescansoEditar.setVisible(false);
             iptDescansoLongoEditar.setVisible(false);
@@ -402,7 +272,6 @@ public class InterfaceClk extends javax.swing.JFrame {
             btnEditar.setText("Editar");
             if (timer != null) {
                 Temporizador.contando = 1;
-                timerSetado = 0;
                 btnIniciarPausar.setText("Iniciar");
                 Temporizador.rodando = 0;
                 Temporizador.threadKill = true;
@@ -452,29 +321,19 @@ public class InterfaceClk extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnIniciarPausar;
     private javax.swing.JButton btnParar;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JTextField iptDescansoEditar;
     private javax.swing.JTextField iptDescansoLongoEditar;
     private javax.swing.JTextField iptTrabalhoEditar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblDescansoEditar;
-    private javax.swing.JLabel lblDescansoLongoEditar;
     private javax.swing.JLabel lblTempo;
     private javax.swing.JLabel lblTempoAtual;
     private javax.swing.JLabel lblTempoDescanso;
     private javax.swing.JLabel lblTempoDescansoLongo;
     private javax.swing.JLabel lblTempoTrabalho;
-    private javax.swing.JLabel lblTrabalhoEditar;
     private javax.swing.JLabel lblTurno;
     // End of variables declaration//GEN-END:variables
 }

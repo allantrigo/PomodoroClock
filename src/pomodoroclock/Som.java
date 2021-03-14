@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
  */
 public class Som {
     
-    private int vezes = 5;
+    private int vezes = 3;
 
     /**
      * 
