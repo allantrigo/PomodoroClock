@@ -3,25 +3,35 @@ package pomodoroclock;
 import java.util.ArrayList;
 
 /**
+ * A classe com a Interface do Clock.
  *
  * @author Allan
  */
 public class InterfaceClk extends javax.swing.JFrame {
 
-    static int correndoOuPausado = 0;
+    public static int correndoOuPausado = 0;
+    public static int pausado = 0;
+
     private int editar = 0;
     private int trabalho;
-    public static int pausado = 0;
     private int descanso;
     private int descansoLongo;
-    Temporizador timer;
-    Arquivo arquivo = new Arquivo();
 
+    Temporizador timer;
+    Arquivo arquivo;
+
+    /**
+     * Metodo para iniciar a interface.
+     *
+     * Ela deixa algumas coisas invisíveis, assim como lê o arquivo para ver
+     * quais são os tempos de trabalho, descanso e descanso longo.
+     */
     public InterfaceClk() {
         initComponents();
         iptTrabalhoEditar.setVisible(false);
         iptDescansoEditar.setVisible(false);
         iptDescansoLongoEditar.setVisible(false);
+        arquivo = new Arquivo();
         pegarTempo();
         if (trabalho == 0 || descanso == 0 || descansoLongo == 0) {
             pegarTempo();
@@ -29,6 +39,11 @@ public class InterfaceClk extends javax.swing.JFrame {
         setarRelogio();
     }
 
+    /**
+     * Uma função para pegar os tempos do arquivo e salvá-los em variáveis.
+     *
+     * Ela também coloca os números já escritos na tela.
+     */
     private void pegarTempo() {
         ArrayList<String> tempos = arquivo.pegaTemposEditados();
         for (int i = 0; i < tempos.size(); i++) {
@@ -49,6 +64,9 @@ public class InterfaceClk extends javax.swing.JFrame {
         lblTempoDescansoLongo.setText(String.valueOf(descansoLongo));
     }
 
+    /**
+     * Uma função simples para setar o relogio para o tempo inicial.
+     */
     public void setarRelogio() {
         int minutos = trabalho;
         String tempoMin;
@@ -134,31 +152,31 @@ public class InterfaceClk extends javax.swing.JFrame {
 
         iptDescansoLongoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         iptDescansoLongoEditar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(iptDescansoLongoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 70, 70));
+        getContentPane().add(iptDescansoLongoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 630, 70, 70));
 
         iptDescansoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         iptDescansoEditar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(iptDescansoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, 70, 70));
+        getContentPane().add(iptDescansoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 630, 70, 70));
 
         iptTrabalhoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         iptTrabalhoEditar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(iptTrabalhoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 70, 70));
+        getContentPane().add(iptTrabalhoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 630, 70, 70));
 
         lblTempoDescanso.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         lblTempoDescanso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoDescanso.setText("5");
         lblTempoDescanso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(lblTempoDescanso, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 70, 70));
+        getContentPane().add(lblTempoDescanso, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 630, 70, 70));
 
         lblTempoDescansoLongo.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         lblTempoDescansoLongo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoDescansoLongo.setText("30");
-        getContentPane().add(lblTempoDescansoLongo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, 70, 70));
+        getContentPane().add(lblTempoDescansoLongo, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 630, 70, 70));
 
         lblTempoTrabalho.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         lblTempoTrabalho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoTrabalho.setText("25");
-        getContentPane().add(lblTempoTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 70, 70));
+        getContentPane().add(lblTempoTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 630, 70, 70));
 
         btnEditar.setBackground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png"))); // NOI18N
@@ -183,12 +201,21 @@ public class InterfaceClk extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 300, 80));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoCorreto.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Fundo.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * O botão para iniciar e pausar a contagem de tempo.
+     *
+     * Ela muda sua imagem para pausar ou para iniciar. Ela também para ou faz o
+     * contador andar do temporizador ao setar a variável rodando para 1 ou para
+     * 0;
+     *
+     * @param evt
+     */
     private void btnIniciarPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPausarActionPerformed
         btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pausar.png")));
         btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PausarPressed.png")));
@@ -216,9 +243,16 @@ public class InterfaceClk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIniciarPausarActionPerformed
 
+    /**
+     * O botão para parar o contador sem mudar seu número.
+     *
+     * Uma função simples para parar o contador e não alterar o número no
+     * relógio. Ela também seta o botão para inciar caso não esteja pausado.
+     *
+     * @param evt
+     */
     private void btnPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPararActionPerformed
         if (timer != null) {
-            Temporizador.contando = 1;
             btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
             btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
             Temporizador.rodando = 0;
@@ -230,8 +264,16 @@ public class InterfaceClk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPararActionPerformed
 
+    /**
+     * Uma função para reiniciar o relógio.
+     *
+     * Ela reinicia o tempo e o mostra na tela. Isso permite que se mostre o
+     * tempo inicial e resete os turnos na tela.
+     *
+     * @param evt
+     */
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
-            setarRelogio();
+        setarRelogio();
         if (timer != null) {
             btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
             btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
@@ -246,6 +288,16 @@ public class InterfaceClk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReiniciarActionPerformed
 
+    /**
+     * A função para editar os tempos.
+     *
+     * Ela basicamente reseta os tempos do usuário após ter os tempos novos
+     * setados. Ela também esconde ou mostra os campos para editar os tempos de
+     * Trabalho, Descanso ou Descanso Longo, que só serão editados se houver
+     * números.
+     *
+     * @param evt
+     */
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String trabalhoEditar;
         String descansoEditar;
@@ -257,6 +309,9 @@ public class InterfaceClk extends javax.swing.JFrame {
             iptTrabalhoEditar.setVisible(true);
             iptDescansoEditar.setVisible(true);
             iptDescansoLongoEditar.setVisible(true);
+            iptTrabalhoEditar.setText(String.valueOf(trabalho));
+            iptDescansoEditar.setText(String.valueOf(descanso));
+            iptDescansoLongoEditar.setText(String.valueOf(descansoLongo));
             editar = 1;
         } else if (editar == 1) {
             btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png")));
@@ -285,11 +340,7 @@ public class InterfaceClk extends javax.swing.JFrame {
             iptTrabalhoEditar.setVisible(false);
             iptDescansoEditar.setVisible(false);
             iptDescansoLongoEditar.setVisible(false);
-            iptTrabalhoEditar.setText("");
-            iptDescansoEditar.setText("");
-            iptDescansoLongoEditar.setText("");
             if (timer != null) {
-                Temporizador.contando = 1;
                 btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
                 btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
                 Temporizador.rodando = 0;
@@ -298,6 +349,7 @@ public class InterfaceClk extends javax.swing.JFrame {
                 pausado = 0;
                 correndoOuPausado = 0;
                 Temporizador.rotinaNumero = 0;
+                timer = null;
             }
             setarRelogio();
         }

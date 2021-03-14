@@ -8,39 +8,55 @@ import javax.sound.sampled.*;
 import javax.swing.JButton;
 
 /**
+ * Classe que faz todo o trabalho do Pomodoro Clock.
  *
- * @author Allan Temporizador Estático para o tempo total. Contador para parar o
- * run. ints para os minutos e segundos. Strings para o tempo que vai ser
- * enviado para o jLabel. Instância da função que toca som, e o jLabel.
+ * @author Allan
  */
 public class Temporizador extends Thread {
 
     public static int tempoAgora;
-    public static int tempoInicial = tempoAgora;
-    public static int contando = 0;
     public static int rodando;
-    public boolean threadKill2 = false;
+    public static int rotinaNumero;
+
     public static boolean threadKill;
+
     private int minutos;
     private int segundos;
-    private String tempoMin;
-    private String tempoSeg;
-
     private int trabalho;
     private int descanso;
     private int descansoLongo;
-    public static int rotinaNumero;
 
-    JLabel tempoAtual = new JLabel();
-    Arquivo arquivo = new Arquivo();
-    Som musica = new Som();
+    private boolean threadKill2;
 
-    JLabel relogio = new JLabel();
-    JLabel turno = new JLabel();
-    JButton pausar = new JButton();
+    private String tempoMin;
+    private String tempoSeg;
+
+    JLabel tempoAtual;
+    JLabel relogio;
+    JLabel turno;
+
+    JButton pausar;
+
+    Arquivo arquivo;
+
+    Som musica;
+
+    public Temporizador() {
+        threadKill2 = false;
+        tempoAtual = new JLabel();
+        relogio = new JLabel();
+        turno = new JLabel();
+        pausar = new JButton();
+        arquivo = new Arquivo();
+        musica = new Som();
+    }
 
     /**
      * Função run para fazer com que o tempo diminua segundo por segundo.
+     *
+     * É necessário um Thread Killer, que é o threadKill2. A int Fim também
+     * server para indicar que o tempo total acabou. E a Rotina serve para ler o
+     * caminho todo.
      */
     @Override
     public void run() {
@@ -113,6 +129,11 @@ public class Temporizador extends Thread {
         }
     }
 
+    /**
+     * função para setar o relógio. Ela pega o tempo chamado tempoAgora e divide
+     * ele em minutos e segundos. É chamada sempre que há a necessidade de se
+     * atualizar o relógio.
+     */
     public void setarRelogio() {
         minutos = tempoAgora / 60;
         segundos = tempoAgora % 60;
@@ -129,6 +150,11 @@ public class Temporizador extends Thread {
         relogio.setText(tempoMin + ":" + tempoSeg);
     }
 
+    /**
+     * Uma função simples para resetar o relógio.
+     *
+     * Coloca os turnos em 1 e retorna o tempo para o do primeiro turno.
+     */
     public void resetarRelogio() {
         tempoAgora = trabalho * 60;
         turno.setText(("1"));
@@ -136,6 +162,16 @@ public class Temporizador extends Thread {
         setarRelogio();
     }
 
+    /**
+     * Função que roda o relógio dentro da rotina.
+     *
+     * Pega o tempo e a int estática para fazer o tempo rodar. caso esteja
+     * rodando, ela passa direto, e reduz o tempo atual. caso esteja pausado ou
+     * parado ela soma 1 no contador sempre que reduz. Isso mantem a função
+     * rodando e permite que o sleep também impeça que o a função acabe
+     * consumindo muita memória. Toda vez que chega no fim da contagem ela toca
+     * a função música.
+     */
     public void pomodoro() {
         threadKill2 = false;
         rodando = 1;
@@ -148,7 +184,7 @@ public class Temporizador extends Thread {
                 setarRelogio();
                 if (i > 0 && !threadKill2) {
                     try {
-                        sleep(10);
+                        sleep(1000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Temporizador.class
                                 .getName()).log(Level.SEVERE, null, ex);
@@ -176,6 +212,12 @@ public class Temporizador extends Thread {
         }
     }
 
+    /**
+     * Uma função para pegar o tempo do arquivo.
+     *
+     * Lê linha por linha dela e então seta os tempos de trabalho, descanso e
+     * descanso longo.
+     */
     public void pegarTempo() {
         ArrayList<String> tempos = arquivo.pegaTemposEditados();
         for (int i = 0; i < tempos.size(); i++) {

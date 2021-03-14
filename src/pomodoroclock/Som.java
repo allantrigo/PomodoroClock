@@ -11,23 +11,23 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.SwingUtilities;
 
 /**
+ * Classe para executar o som de alarme.
  *
  * @author Allan
  */
 public class Som {
-    
+
     private int vezes = 3;
 
     /**
-     * 
+     *
      * @throws UnsupportedAudioFileException
-     * @throws LineUnavailableException 
-     * Toca o .wav file no fim da contagem. Pegando o endereço dele no package
-     * Ele lê onde está o item e então cria um clip. É necessário o Runnable pra
-     * tocar ele até o fim.
-     * Mudando o número de vezes pode-se alterar quantos bips tocam.
-     * 
-     * 
+     * @throws LineUnavailableException Toca o .wav file no fim da contagem.
+     * Pegando o endereço dele no package Ele lê onde está o item e então cria
+     * um clip. É necessário o Runnable pra tocar ele até o fim. Mudando o
+     * número de vezes pode-se alterar quantos bips tocam.
+     *
+     *
      */
     public void tocarMusica() throws UnsupportedAudioFileException, LineUnavailableException, LineUnavailableException {
         try {

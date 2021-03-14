@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 /**
+ * Classe para criar um arquivo que salva as definicições do usuário.
  *
  * @author Allan
  */
@@ -24,6 +25,14 @@ public class Arquivo {
     InputStreamReader isr = null;
     BufferedReader br = null;
 
+    /**
+     * Uma função que recebe os tempos editados para salvá-los no arquivo.
+     *
+     * Ela salva cada um deles em linhas separadas, com um total de 3 linhas que
+     * podem também ser editadas no Arquivo.
+     *
+     * @param temposEditados Recebe os tempos editados em outras classes.
+     */
     public void SalvaTemposEditados(ArrayList<String> temposEditados) {
         try {
             os = new FileOutputStream("Arquivo.txt", false);
@@ -43,6 +52,16 @@ public class Arquivo {
         }
     }
 
+    /**
+     * A função que recupera os tempos editados do Arquivo.txt.
+     *
+     * Caso ela não encontre nenhum tempo cria um Arquivo com os tempos padrão
+     * que são 25, 5 e 30 minutos.
+     *
+     * @return Retorna um ArrayList de Strings com os tempos de Trabalho,
+     * Descanso e Descanso Longo.
+     *
+     */
     public ArrayList<String> pegaTemposEditados() {
         ArrayList<String> temposEditados = new ArrayList();
         try {
