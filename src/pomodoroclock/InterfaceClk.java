@@ -81,98 +81,107 @@ public class InterfaceClk extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(540, 960));
-        setPreferredSize(new java.awt.Dimension(540, 960));
+        setTitle("Pomodoro Clock");
+        setMinimumSize(new java.awt.Dimension(515, 825));
+        setPreferredSize(new java.awt.Dimension(320, 640));
+        setResizable(false);
         setSize(new java.awt.Dimension(400, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTempo.setFont(new java.awt.Font("Calibri", 1, 48)); // NOI18N
         lblTempo.setText("00:00");
-        getContentPane().add(lblTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 340, -1, -1));
+        getContentPane().add(lblTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 270, -1, -1));
 
         lblTurno.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         lblTurno.setText("1");
-        getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 460, 40, -1));
+        getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 370, 40, -1));
 
         btnReiniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Reiniciar.png"))); // NOI18N
         btnReiniciar.setBorder(null);
         btnReiniciar.setBorderPainted(false);
         btnReiniciar.setContentAreaFilled(false);
+        btnReiniciar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ReiniciarPressed.png"))); // NOI18N
         btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReiniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnReiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 607, 180, 102));
+        getContentPane().add(btnReiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 491, 148, 68));
 
         btnParar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Parar.png"))); // NOI18N
         btnParar.setBorderPainted(false);
         btnParar.setContentAreaFilled(false);
+        btnParar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PararPressed.png"))); // NOI18N
         btnParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPararActionPerformed(evt);
             }
         });
-        getContentPane().add(btnParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 607, 180, 102));
+        getContentPane().add(btnParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 491, 148, 68));
 
         btnIniciarPausar.setBackground(new java.awt.Color(255, 255, 255));
         btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png"))); // NOI18N
         btnIniciarPausar.setBorder(null);
         btnIniciarPausar.setBorderPainted(false);
         btnIniciarPausar.setContentAreaFilled(false);
+        btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png"))); // NOI18N
         btnIniciarPausar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarPausarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciarPausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 607, 180, 102));
+        getContentPane().add(btnIniciarPausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 491, 148, 68));
 
         iptDescansoLongoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
-        getContentPane().add(iptDescansoLongoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 790, 70, 70));
+        iptDescansoLongoEditar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(iptDescansoLongoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 70, 70));
 
         iptDescansoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
-        getContentPane().add(iptDescansoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 790, 70, 70));
+        iptDescansoEditar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(iptDescansoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, 70, 70));
 
         iptTrabalhoEditar.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
-        getContentPane().add(iptTrabalhoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 70, 70));
+        iptTrabalhoEditar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(iptTrabalhoEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 70, 70));
 
         lblTempoDescanso.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         lblTempoDescanso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoDescanso.setText("5");
         lblTempoDescanso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(lblTempoDescanso, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 788, 70, 70));
+        getContentPane().add(lblTempoDescanso, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 70, 70));
 
         lblTempoDescansoLongo.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         lblTempoDescansoLongo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoDescansoLongo.setText("30");
-        getContentPane().add(lblTempoDescansoLongo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 788, 70, 70));
+        getContentPane().add(lblTempoDescansoLongo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, 70, 70));
 
         lblTempoTrabalho.setFont(new java.awt.Font("Times New Roman", 1, 50)); // NOI18N
         lblTempoTrabalho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoTrabalho.setText("25");
-        getContentPane().add(lblTempoTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 70, 70));
+        getContentPane().add(lblTempoTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 70, 70));
 
         btnEditar.setBackground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png"))); // NOI18N
         btnEditar.setBorder(null);
         btnEditar.setOpaque(false);
+        btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/EditarPressed.png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 870, -1, -1));
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 722, -1, -1));
 
         jPanel1.setOpaque(false);
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblTempoAtual.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        lblTempoAtual.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         lblTempoAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTempoAtual.setText("TRABALHO");
         lblTempoAtual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblTempoAtual);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 330, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 300, 80));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoCorreto.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -181,8 +190,9 @@ public class InterfaceClk extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPausarActionPerformed
-        btnIniciarPausar.setText("Pausar");
         btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pausar.png")));
+        btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PausarPressed.png")));
+
         if (correndoOuPausado == 0) {
             if (pausado == 0) {
                 timer = new Temporizador();
@@ -200,6 +210,7 @@ public class InterfaceClk extends javax.swing.JFrame {
         } else if (correndoOuPausado == 1) {
             Temporizador.rodando = 0;
             btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
+            btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
             correndoOuPausado = 0;
             pausado = 1;
         }
@@ -209,22 +220,27 @@ public class InterfaceClk extends javax.swing.JFrame {
         if (timer != null) {
             Temporizador.contando = 1;
             btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
+            btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
             Temporizador.rodando = 0;
             Temporizador.threadKill = true;
             pausado = 0;
+            timer = null;
             correndoOuPausado = 0;
             Temporizador.rotinaNumero = 0;
         }
     }//GEN-LAST:event_btnPararActionPerformed
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
+            setarRelogio();
         if (timer != null) {
             btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
+            btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
             Temporizador.rodando = 0;
             Temporizador.threadKill = true;
-            lblTempoAtual.setText("TRABALHO"); 
+            lblTempoAtual.setText("TRABALHO");
             timer.resetarRelogio();
             pausado = 0;
+            timer = null;
             correndoOuPausado = 0;
             Temporizador.rotinaNumero = 0;
         }
@@ -236,12 +252,15 @@ public class InterfaceClk extends javax.swing.JFrame {
         String descansoLongoEditar;
         ArrayList<String> tempoEditado = new ArrayList();
         if (editar == 0) {
+            btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Salvar.png")));
+            btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/SalvarPressed.png")));
             iptTrabalhoEditar.setVisible(true);
             iptDescansoEditar.setVisible(true);
             iptDescansoLongoEditar.setVisible(true);
-            btnEditar.setText("Salvar");
             editar = 1;
         } else if (editar == 1) {
+            btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Editar.png")));
+            btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/EditarPressed.png")));
             trabalhoEditar = iptTrabalhoEditar.getText();
             descansoEditar = iptDescansoEditar.getText();
             descansoLongoEditar = iptDescansoLongoEditar.getText();
@@ -269,10 +288,10 @@ public class InterfaceClk extends javax.swing.JFrame {
             iptTrabalhoEditar.setText("");
             iptDescansoEditar.setText("");
             iptDescansoLongoEditar.setText("");
-            btnEditar.setText("Editar");
             if (timer != null) {
                 Temporizador.contando = 1;
-                btnIniciarPausar.setText("Iniciar");
+                btnIniciarPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
+                btnIniciarPausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
                 Temporizador.rodando = 0;
                 Temporizador.threadKill = true;
                 timer.resetarRelogio();

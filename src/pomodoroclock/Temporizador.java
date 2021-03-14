@@ -100,6 +100,7 @@ public class Temporizador extends Thread {
                     Temporizador.threadKill = true;
                     resetarRelogio();
                     pausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Iniciar.png")));
+                    pausar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/IniciarPressed.png")));
                     InterfaceClk.pausado = 0;
                     InterfaceClk.correndoOuPausado = 0;
                     Temporizador.rotinaNumero = 0;
@@ -147,7 +148,7 @@ public class Temporizador extends Thread {
                 setarRelogio();
                 if (i > 0 && !threadKill2) {
                     try {
-                        sleep(1000);
+                        sleep(10);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Temporizador.class
                                 .getName()).log(Level.SEVERE, null, ex);

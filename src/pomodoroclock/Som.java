@@ -31,7 +31,7 @@ public class Som {
      */
     public void tocarMusica() throws UnsupportedAudioFileException, LineUnavailableException, LineUnavailableException {
         try {
-            InputStream somBeep = getClass().getResource("beep-07.wav").openStream();
+            InputStream somBeep = getClass().getResource("/sounds/beep-07.wav").openStream();
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(somBeep);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
